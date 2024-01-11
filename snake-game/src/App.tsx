@@ -140,7 +140,8 @@ import logo from "./logo.png";
     "Web Development",
     "Wildlife Biology",
     "Women’s Studies",
-    "Zoology"
+    "Zoology",
+    ""
   ];
 
   const handleMajorChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -194,7 +195,7 @@ useEffect(() => {
           {jobResults && jobResults.slice(0, 3).map((job, index) => (
             <div key={index} className="placeholder-box">
               <div className="title-box">{job.title}</div>
-              <p className="placeholder-text">{job.description  || job.snippet}</p>
+              <p className="placeholder-text">{ job.snippet}</p>
             </div>
           ))}
         </div>
