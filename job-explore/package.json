@@ -1,5 +1,5 @@
 {
-  "name": "snake-game",
+  "name": "job-explore",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -28,5 +28,5 @@
     "typescript": "^5.2.2",
     "vite": "^5.0.10"
   }
-  C:\Python310\New folder\Job_Outlier\job-explore
+  
 }

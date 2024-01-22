@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import axios from "axios";
 import "./App.css";
+import mockData from "./mockData.json";
 import logo from "./logo.png";
 
   const App: React.FC = () => {
@@ -141,33 +142,27 @@ import logo from "./logo.png";
     "Wildlife Biology",
     "Women’s Studies",
     "Zoology",
-    ""
+  
   ];
 
   const handleMajorChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedMajor(event.target.value);
   };
 
-useEffect(() => {
-    const fetchJobsByMajor = async () => {
+
+  useEffect(() => {
+    const fetchJobsByMajor = () => {
       if (selectedMajor) {
-        try {
-          const response = await axios.get(
-            `https://cors-anywhere.herokuapp.com/https://serpapi.com/search.json?engine=google&q=${encodeURIComponent(
-              `${selectedMajor}`
-            )}&api_key=${apiKey}`   
-          );
-          setJobResults(response.data.organic_results);
-        } catch (error) {
-          console.error("Error fetching job results:", error);
-        }
+        const filteredJobs = mockData.filter(job => job.major === selectedMajor);
+        setJobResults(filteredJobs);
       }
     };
 
-     fetchJobsByMajor();
+    fetchJobsByMajor();
   }, [selectedMajor]);
-  
+
   return (
+
     <>
       <div className="logo">
         <img src={logo} alt="Logo" />
@@ -192,7 +187,7 @@ useEffect(() => {
         </div>
         {/* Wrap the boxes in a container with horizontal scrolling */}
         <div className="scroll-container">
-          {jobResults && jobResults.slice(0, 3).map((job, index) => (
+          {jobResults && jobResults.slice(0, 9).map((job, index) => (
             <div key={index} className="placeholder-box">
               <div className="title-box">{job.title}</div>
               <p className="placeholder-text">{ job.snippet}</p>
